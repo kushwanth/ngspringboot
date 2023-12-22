@@ -1,0 +1,64 @@
+<div class="container" *ngIf="isLoggedIn">
+    <br><p class="alert alert-info">Only Alphabetic character</p><br>
+    <form [formGroup]="form_data" (ngSubmit)="operation()"  [noValidate]="false">
+        <div class="container">
+          <div class="container-fluid">
+            <div class="mb-3" *ngIf="userUpdate">
+              <label for="fname" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="fname" formControlName="fname" required="required" pattern="([a-zA-Z\s]+){1,}" placeholder="{{ data.first_name }}" ngModel>
+            </div>
+            <div class="mb-3" *ngIf="!userUpdate">
+              <label for="fname" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="fname" formControlName="fname" required="required" pattern="([a-zA-Z\s]+){1,}" ngModel>
+            </div>
+          </div>
+          <div *ngIf="form_data.touched" class="invalid-feedback">
+            <div *ngIf="form_data.value.fname.errors?.['required']">
+              This field is required.
+            </div>
+            <div *ngIf="form_data.value.fname.errors?.['minlength']">
+              This field must have at least 1 character.
+            </div>
+            <div *ngIf="form_data.value.fname.errors?.['maxlength']">
+              This field must have at most 50 characters.
+            </div>
+            <div *ngIf="form_data.value.fname.errors?.['pattern']">
+              Only Alphabetic characters
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="container-fluid">
+            <div class="mb-3" *ngIf="userUpdate">
+                <label for="lname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lname" formControlName="lname" required="required" pattern="([a-zA-Z\s]+){1,}" placeholder="{{ data.last_name }}" ngModel>
+            </div>
+            <div class="mb-3" *ngIf="!userUpdate">
+              <label for="lname" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lname" formControlName="lname" required="required" pattern="([a-zA-Z\s]+){1,}" ngModel>
+            </div>
+          </div>
+          <div *ngIf="form_data.touched" class="invalid-feedback">
+            <div *ngIf="form_data.value.lname.errors?.['required']">
+              This field is required.
+            </div>
+            <div *ngIf="form_data.value.lname.errors?.['minlength']">
+              This field must have at least 1 character.
+            </div>
+            <div *ngIf="form_data.value.lname.errors?.['maxlength']">
+              This field must have at most 50 characters.
+            </div>
+            <div *ngIf="form_data.value.lname.errors?.['pattern']">
+              Only Alphabetic characters
+            </div>
+          </div>
+        </div>  
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+<br><br>
+<span class="alert alert-danger" *ngIf="failed">Request Failed</span>
+<div class="container" *ngIf="success">
+  <p class="alert alert-success">Success</p>
+  <button class="btn btn-success"><a href="/home" class="nav-link">Home</a></button>
+</div>

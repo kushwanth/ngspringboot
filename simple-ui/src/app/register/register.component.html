@@ -1,0 +1,39 @@
+<form [formGroup]="form_data" (ngSubmit)="registration()" [noValidate]="false">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username[A-Za-z0-9]</label>
+        <input type="text" class="form-control" id="username" formControlName="username" required="required" pattern="([a-zA-Z0-9\s]+){1,}" ngModel>
+    </div>
+    <div class="mb-3">
+        <label for="fname" class="form-label">First Name[A-Za-z]</label>
+        <input type="text" class="form-control" id="fname" formControlName="fname" required="required" pattern="([a-zA-Z\s]+){1,}" ngModel>
+    </div>
+    <div class="mb-3">
+        <label for="lname" class="form-label">Last Name[A-Za-Z]</label>
+        <input type="text" class="form-control" id="lname" formControlName="lname" required="required" pattern="([a-zA-Z\s]+){1,}" ngModel>
+    </div>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone(with Country code like 91)</label>
+        <input type="tel" class="form-control" id="phone" formControlName="phone" required="required" pattern="([0-9\s]+)" ngModel>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address(your.name@email.com)</label>
+      <input type="email" class="form-control" id="email" formControlName="email" required="required" ngModel>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password(length [min:8, max:16])</label>
+      <input type="password" class="form-control" id="password" formControlName="password" required="required" ngModel>
+    </div>
+    <div class="mb-3">
+        <label for="cpassword" class="form-label">Confirm Password(should be same as above)</label>
+        <input type="password" class="form-control" id="cpassword" formControlName="cpassword" required="required" ngModel>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;<button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
+</form>
+<br><br>
+<p class="alert alert-danger" *ngIf="failed">
+    Request Failed, Check your Details
+</p>
+<div class="container" *ngIf="success">
+    <p class="alert alert-success">Success</p>
+    <button class="btn btn-success"><a href="/home" class="nav-link">Home</a></button>
+</div>

@@ -1,0 +1,18 @@
+<div class="container" *ngIf="isLoggedIn">
+  <table class="table container-sm justify-content-center">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td scope="col">{{ user.id }}</td>        
+          <td scope="col">{{ user.first_name }}</td>
+          <td scope="col">{{ user.last_name }}</td>
+        </tr>
+      </tbody>
+  </table>
+</div>

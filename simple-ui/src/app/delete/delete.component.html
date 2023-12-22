@@ -1,0 +1,23 @@
+<div class="container" *ngIf="isLoggedIn">
+  <br><br>
+    <div class="card">
+          <div class="card-content">
+            <div class="card-header">
+              <h5 class="card-title">Deleting User</h5>
+            </div>
+            <div class="card-body">
+              <p>Delete the User {{ data.first_name }} {{ data.last_name }}</p>
+            </div>
+            <div class="card-footer">
+              <button type="button" class="btn btn-secondary"><a href="/home" class="nav-link">No</a></button>&nbsp;&nbsp;
+              <button type="button" class="btn btn-danger" (click)="deleteUser( data.id )">Yes</button>
+            </div>
+          </div>
+      </div>
+      <div class="container" *ngIf="success">
+        <p class="alert alert-success">Success</p>
+        <button class="btn btn-success"><a href="/home" class="nav-link">Home</a></button>
+      </div>
+</div>
+<span class="alert alert-danger" *ngIf="failed">Request Failed</span>
+<span class="alert alert-success" *ngIf="success">Success</span>

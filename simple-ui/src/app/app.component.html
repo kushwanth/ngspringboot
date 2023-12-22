@@ -1,0 +1,39 @@
+<div id="app">
+  <nav class="navbar navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Simple crud API</a>
+    <ul class="justify-content-end" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/home" class="nav-link active" routerLink="home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="/user" class="nav-link active" *ngIf="isLoggedIn" routerLink="user">User</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/login" class="nav-link active" routerLink="login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a href="/register" class="nav-link active" routerLink="register">Register</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/create" class="nav-link active" routerLink="create">Create user</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href class="nav-link active" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
